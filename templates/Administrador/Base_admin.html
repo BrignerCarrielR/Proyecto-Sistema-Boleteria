@@ -1,0 +1,38 @@
+{% extends 'Base_Admin.html' %}
+{% load static %}
+{% block regresar %}
+	<a class="btn btn btn-danger" href="{{ url_anterior }}">
+		Regresar
+	</a>
+{% endblock %}
+{% block main %}
+	<div class="container-fluid">
+		<div>
+			<div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-2">
+				<div class="col ">
+					<div class="card shadow-lg p-3 mb-5 bg-body rounded" style="height:15rem; width: 15rem">
+						<img src="{% static 'img/usuarios.png' %}" class="img-fluid  mx-auto d-block" style="width:60%">
+						<div class="card-body text-center">
+							<h5 class="card-title text-secondary">Oficinistas</h5>
+							<a class="btn btn-secondary btn-outline-light form-control"
+							   href="{% url 'listausuario' %}">IR</a>
+						</div>
+					</div>
+				</div>
+				<div class="col ">
+					<div class="card shadow-lg p-3 mb-5 bg-body rounded" style="height:15rem; width: 15rem">
+						<img src="{% static 'img/mantenimientos.png' %}" class="img-fluid  mx-auto d-block"
+						     style="width:60%">
+						<div class="card-body text-center">
+							<h5 class="card-title text-secondary">Mantenimientos</h5>
+							<a class="btn btn-secondary btn-outline-light form-control"
+							   href="{% url 'Mantenimientos_Administrador' %}">IR</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+

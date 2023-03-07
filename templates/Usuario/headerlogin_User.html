@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg" style="background-color: #003b46;">
+	<div class="container-fluid">
+		<a class="navbar-brand" style="color: #c4dfe6;" href="" title="Nombre de Agencia de Transporte">Agencia de
+			Transporte</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+		        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" style="color: #c4dfe6;" href="{{ Inic }}"
+					   title="Volver a la Pagina Principal del Usuario">Inicio</a>
+				</li>
+			</ul>
+			{% if request.session.nom_user %}
+			<ul class="navbar-nav ms-auto">
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" style="color: #c4dfe6;" href="" role="button"
+					   data-bs-toggle="dropdown" aria-expanded="false"  name="headerLogin" id="{{ request.session.id }}
+					   ,{{ request.session.nom_user }}" title="Tu Usuario">
+						Usuario: {{ request.session.nom_user }}
+					</a>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="{% url 'cerrarsecion' %}" title="Cerrar Sesion">Cerrar
+							Sesión</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<div style=" height: 11px; background-color: #66a5ad;">
+</div>
+<div class="h4 m-3 pb-2 mb-4 border-bottom border-success" style="color: #003b46;">
+	{{ rol }}
+</div>
+{% endif %}

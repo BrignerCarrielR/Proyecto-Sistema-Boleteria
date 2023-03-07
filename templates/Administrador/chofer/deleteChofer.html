@@ -1,0 +1,32 @@
+{% extends 'Administrador/delete_admin.html' %}
+{% load static %}
+
+
+{% block controls %}
+	{% csrf_token %}
+	<b STYLE="color: #003b46">Estas seguro de eliminar este Registro?</b>
+	<p>_______No se podrá recuperar la siguiente información!</p>
+	<hr>
+	<b>Informacion:</b>
+	<table class="table">
+		<thead>
+		<tr>
+			<th style="width: 250px" scope="col">Nombres</th>
+			<th  style="width: 250px" scope="col">Cedula</th>
+			<th style="width: 250px"  scope="col">Telefono</th>
+			<th style="width: 250px"  scope="col">Tipo Licencia</th>
+			<th style="width: 250px"  scope="col">Expiración Lic</th>
+
+		</tr>
+		</thead>
+		<tbody class="table-group-divider">
+		<tr>
+			<td style="width: 250px" >{{ object.nombres}} {{ object.apellidos }}</td>
+			<td style="width: 250px" >{{ object.cedula }}</td>
+			<td style="width: 250px" >{{ object.telefonos }}</td>
+			<td style="width: 250px" >{{ object.get_tipo_licencia_display }}</td>
+			<td style="width: 250px" >{{ object.exp_licencia|date:"d/m/Y" }}</td>
+		</tr>
+		</tbody>
+	</table>
+{% endblock %}

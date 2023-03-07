@@ -1,0 +1,53 @@
+{% extends 'Usuario/list_user.html' %}
+{% load static %}
+
+{% block search %}
+	<form action="" method="GET">
+		<form method="get">
+		<input type="text" name="marca" placeholder="Marca" value="{{ request.GET.marca }}">
+		<input type="text" name="modelo" placeholder="Modelo" value="{{ request.GET.modelo }}">
+		<input type="text" name="asiento" placeholder="Numeros de Asientos" value="{{ request.GET.asiento }}">
+		<input type="submit" class="col-md-1" value="Filtrar" title="Buscar por la Información Ingresada">
+		<input type="button" value="Limpiar" onclick="location.href='{% url 'list_buses_user' %}'"
+		title="Limpiar la Información Ingresada">
+	</form>
+	</form>
+{% endblock %}
+
+{% block columns %}
+	<tr>
+		<th>Nro</th>
+		<th>Placa</th>
+		<th>Marca</th>
+		<th>Modelo</th>
+		<th>Asientos</th>
+		<th>Propietario</th>
+		<th>Cédula</th>
+		<th>Teléfono</th>
+		<th class="text-center" scope="col">Acciones</th>
+	</tr>
+{% endblock %}
+
+{% block rows %}
+	{% for object in buses %}
+		<tr>
+			<th scope="row">{{ object.id }}</th>
+			<td>{{ object.placa }}</td>
+			<td> {{ object.marca }}</td>
+			<td> {{ object.modelo }}</td>
+			<td> {{ object.capacidad_pasajero }}</td>
+			<td> {{ object.propietario }}</td>
+			<td> {{ object.cedula }}</td>
+			<td>{{ object.telefono }}</td><td class="text-center">
+				<a class='btn text-light' style="background-color: #003b46; color: #c4dfe6;"
+				   title="Ver Factura del Boleto"
+				   href="{% url 'DetalleBuses_user' object.id %}">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+					     class="bi bi-info-square-fill" viewBox="0 0 16 16">
+						<path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.93 4.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+					</svg>
+				</a>
+			</td>
+		</tr>
+	{% endfor %}
+{% endblock %}

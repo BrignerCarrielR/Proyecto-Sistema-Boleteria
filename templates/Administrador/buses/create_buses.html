@@ -1,0 +1,157 @@
+{% extends 'Administrador/form_admin.html' %}
+{% load static %}
+
+{% block controls %}
+	{% csrf_token %}
+	{% if form.errors %}
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			<strong>Error al Grabar</strong> {{ form.errors }}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	{% endif %}
+	<form class="needs-validation shadow-lg p-3 mb-5 bg-body rounded">
+		<input type="hidden" name="action" value="{{ action }}">
+		<div class="">
+			<div class="input-group row justify-content-md-end">
+				<div class="col-md-6">
+					<div class="input-group mb-3 ">
+						<span class="input-group-text btn-success" id="basic-addon1"
+						      style="background-color: #003b46; color: #ffffff">Modelo</span>
+						{{ form.modelo }}
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="input-group mb-3">
+						<span class="input-group-text btn-success" id="basic-addon1"
+						      style="background-color: #003b46; color: #ffffff">Marca</span>
+						{{ form.marca }}
+					</div>
+				</div>
+			</div>
+			<div class="col-auto input-group row justify-content-md-end">
+				<div class="col-md-6">
+					<div class="input-group mb-3 ">
+						<span class="input-group-text btn-success" id="basic-addon1"
+						      style="background-color: #003b46; color: #ffffff">Placa</span>
+						{{ form.placa }}
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="input-group mb-3">
+						<span class="input-group-text btn-success" id="basic-addon1"
+						      style="background-color: #003b46; color: #ffffff">Año Fábricado</span>
+						{{ form.año_fabricado }}
+					</div>
+				</div>
+			</div>
+			<div class="col-auto input-group row justify-content-md-end">
+				<div class="col-md-6">
+					<div class="input-group mb-3 ">
+						<span class="input-group-text btn-success" id="basic-addon1"
+						      style="background-color: #003b46; color: #ffffff">Motor</span>
+						{{ form.motor }}
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="input-group mb-3">
+						<span class="input-group-text btn-success" id="inputGroup-sizing-default"
+						      style="background-color: #003b46; color: #ffffff">Año del Modelo</span>
+						{{ form.año_modelo }}
+					</div>
+				</div>
+			</div>
+			<div class="col-auto input-group row justify-content-md-end">
+				<div class="col-md-6">
+					<div class="input-group mb-3 ">
+						<span class="input-group-text btn-success" id="basic-addon1"
+						      style="background-color: #003b46; color: #ffffff">Chasís</span>
+						{{ form.chasis }}
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="input-group mb-3">
+						<span class="input-group-text btn-success" id="basic-addon1"
+						      style="background-color: #003b46; color: #ffffff">Kilometraje</span>
+						{{ form.kilometraje }}
+					</div>
+				</div>
+			</div>
+			<div class="col-auto input-group row justify-content-md-end">
+				<div class="col-md-6">
+					<div class="input-group mb-3">
+						<span class="input-group-text btn-success" id="inputGroup-sizing-default"
+						      style="background-color: #003b46; color: #ffffff">Ejes</span>
+						{{ form.ejes }}
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="input-group mb-3 ">
+						<span class="input-group-text btn-success" id="basic-addon1"
+						      style="background-color: #003b46; color: #ffffff">Capacidad de pasajeros</span>
+						{{ form.capacidad_pasajero }}
+					</div>
+				</div>
+			</div>
+			<div class="input-group row justify-content-md-end">
+				<div class="col-md-6">
+					<div class="input-group mb-3">
+						<span class="input-group-text btn-success" id="basic-addon1"
+						      style="background-color: #003b46; color: #ffffff">Ruedas</span>
+						{{ form.ruedas }}
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="input-group mb-3">
+						<span class="input-group-text btn-success" id="basic-addon1"
+						      style="background-color: #003b46; color: #ffffff">Disco</span>
+						{{ form.numerobus }}
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="h4 m-3 pb-1 mb-4 border-bottom border-success" style="color: #003b46;">
+				Propietario
+			</div>
+			<div class="col-auto input-group row justify-content-md-end">
+				<div class="col-md-6">
+					<div class="input-group mb-3">
+						<span class="input-group-text btn-success" id="basic-addon1"
+						      style="background-color: #003b46; color: #ffffff">Nombre</span>
+						{{ form.propietario }}
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="input-group mb-3">
+						<div class="input-group mb-3">
+							<span class="input-group-text btn-success" id="basic-addon1"
+							      style="background-color: #003b46; color: #ffffff">Cédula</span>
+							{{ form.cedula }}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-auto input-group row justify-content-md-end">
+				<div class="col-md-6">
+					<div class="input-group mb-3">
+						<span class="input-group-text btn-success" id="basic-addon1"
+						      style="background-color: #003b46; color: #ffffff">Teléfono</span>
+						{{ form.telefono }}
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="input-group mb-3">
+						<div class="input-group mb-3">
+							<span class="input-group-text btn-success" id="basic-addon1"
+							      style="background-color: #003b46; color: #ffffff">Dirección</span>
+							{{ form.direccion }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<input type="hidden" name="action" value="{{ action }}">
+	<output id="idImgContenedor" style="width: 200px !important;"></output>
+{% endblock %}

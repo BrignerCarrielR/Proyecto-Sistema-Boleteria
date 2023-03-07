@@ -1,0 +1,36 @@
+{% extends 'Administrador/delete_admin.html' %}
+{% load static %}
+
+
+{% block controls %}
+	{% csrf_token %}
+	<b STYLE="color: #003b46">Estas seguro de eliminar este Registro?</b>
+	<p>_______No se podrá recuperar la siguiente información!</p>
+	<hr>
+	<b>Informacion:</b>
+	<table class="table">
+		<thead>
+		<tr>
+			<th scope="col">Nombres</th>
+			<th scope="col">Telefono</th>
+			<th scope="col">Ciudad</th>
+			<th scope="col">Edad</th>
+			<th scope="col">Genero</th>
+			<th scope="col">Usuario</th>
+			<th scope="col">Contraseña</th>
+		</tr>
+		</thead>
+		<tbody class="table-group-divider">
+		<tr>
+			<td>{{ object.nombres }}</td>
+			<td>{{ object.telefono }}</td>
+			<td>{{ object.ciudad }}</td>
+			<td>{{ object.edad }}</td>
+			<td>{{ object.get_genero_display }}</td>
+			<td>{{ object.nom_user }}</td>
+			<td>{{ object.contraseña }}</td>
+		</tr>
+
+		</tbody>
+	</table>
+{% endblock %}

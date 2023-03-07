@@ -1,0 +1,66 @@
+{% extends 'Usuario/detalle_user.html' %}
+{% load static %}
+
+
+{% block controls %}
+	<style>
+        p,h4,h6,strong {
+            font-family: serif;
+        }
+	</style>
+	<div class="container">
+		<div class="container col-md-4 shadow-lg p-3 mb-5 bg-body rounded">
+			<h4 class="text-center fw-bold"><strong>COOPERATIVA TRAN'S PALIZADA</strong></h4>
+			<div class="row">
+				<h6 class="col-3 fw-semibold"><strong>OFICINA:</strong></h6>
+				<p class="col">VINCES . Dir: {{ object.venta.ruta }}
+					Av Terminal Terretre</p>
+			</div>
+			<div class="row">
+				<h6 class="col-3 fw-semibold"><strong>RUC:</strong></h6>
+				<p class="col">99999999999</p>
+			</div>
+			<div class="row">
+				<h6 class="col-3 fw-semibold"><strong>FECHA:</strong></h6>
+				<p class="col">{{ object.venta.fecha_hora.date }}</p>
+			</div>
+			<hr>
+			<div class="row">
+				<h6 class="col-4 fw-semibold"><strong>FACTURA:</strong></h6>
+				<p class="col">{{ object.id }}</p>
+			</div>
+			<div class="row">
+				<h6 class="col-4 fw-semibold"><strong>F-COMPRA</strong></h6>
+				<div class="col">
+					<p class="">{{ object.venta.fecha_hora.date }} : {{ object.hora }}</p>
+				</div>
+			</div>
+			<div class="row">
+				<h6 class="col-4 fw-semibold"><strong>AUTOBUS:</strong></h6>
+				<p class="col">{{ object.venta.buses }}</p>
+			</div>
+			<div class="row">
+				<h6 class="col-4 fw-semibold"><strong>ASIENTO:</strong></h6>
+				<p class="col">{{ object.asiento }}</p>
+			</div>
+			<div class="row">
+				<h6 class="col-4 fw-semibold"><strong>ORIGEN - DESTINO:</strong></h6>
+				<p class="col">{{ object.destino }}</p>
+			</div>
+			<div class="row">
+				<h6 class="col-4 fw-semibold"><strong>ANDEN:</strong></h6>
+				<p class="col">7</p>
+			</div>
+			<div class="row">
+				<h6 class="col-4 fw-semibold"><strong>VALOR:</strong></h6>
+				<p class="col">$ {{ object.costo }}</p>
+			</div>
+			<hr>
+			<div>
+				<h6 class="fw-semibold"><strong>Atendido por:</strong> {{ object.venta.oficinista.nom_user }}</h6>
+				<p><strong>Estimado Usuario en caso de no estar presente a la hora y fecha indicada se perdera el valor de su
+					pasaje.</strong></p>
+			</div>
+		</div>
+	</div>
+{% endblock %}

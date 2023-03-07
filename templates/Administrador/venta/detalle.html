@@ -1,0 +1,90 @@
+{% extends 'Administrador/detalle_admin.html' %}
+{% load static %}
+
+
+{% block controls %}
+	<div class="container" style="font-family: serif;">
+		<div class="container col-md-8 shadow-lg p-3 mb-5 bg-body  rounded">
+			<h4 class="text-center fw-bold">COOPERATIVA TRAN'S PALIZADA</h4>
+			<div class="row">
+				<h6 class="col-2 fw-semibold">OFICINA:</h6>
+				<p class="col"> Dir: {{ object.ruta }}. Av Terminal Terretre</p>
+			</div>
+			<div class="row">
+				<h6 class="col-2 fw-semibold">RUC:</h6>
+				<p class="col">99999999999</p>
+			</div>
+
+			<div class="row">
+				<div class="col">
+
+					<div class="row">
+						<h6 class="col-4 fw-semibold">CHOFER:</h6>
+						<p class="col">{{ object.chofer }}</p>
+					</div>
+				</div>
+				<div class="col">
+					<div class="row">
+						<h6 class="col-6 fw-semibold">ORIGEN - DESTINO:</h6>
+						<p class="col">{{ object.ruta }}</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+
+					<div class="row">
+						<h6 class="col-4 fw-semibold">COPILOTO:</h6>
+						<p class="col">{{ object.copiloto }}</p>
+					</div>
+				</div>
+				<div class="col">
+					<div class="row">
+						<h6 class="col-3 fw-semibold">FECHA:</h6>
+						<p class="col">{{ object.fecha_hora.date }}</p>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<table class="table">
+				<thead>
+				<tr>
+					<th scope="col">Pasajero</th>
+					<th scope="col">Destino</th>
+					<th scope="col">Asiento</th>
+					<th scope="col">Hora</th>
+					<th scope="col">Costo</th>
+
+				</tr>
+				</thead>
+				<tbody class="table-group-divider">
+				{% for det in detalles %}
+
+					{% if det.venta_id == object.id %}
+						<tr>
+							<td>{{ det.pasajero }}</td>
+							<td>{{ det.destino }}</td>
+							<td>{{ det.asiento }}</td>
+							<td>{{ det.hora }}</td>
+							<td>{{ det.costo }}</td>
+						</tr>
+					{% endif %}
+
+				{% endfor %}
+				<tr>
+					<td colspan="3"></td>
+					<th>Total: $</th>
+					<th>{{ object.total }}</th>
+				</tr>
+				</tbody>
+			</table>
+
+			<div class="container">
+				<div class="row">
+					<h5 class="col-11 text-end"></h5>
+				</div>
+			</div>
+
+		</div>
+	</div>
+{% endblock %}

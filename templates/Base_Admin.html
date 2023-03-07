@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{{ rol }}</title>
+    {% load static %}
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+    {% block headcss %}
+    {% endblock %}
+</head>
+<body>
+<header>
+    {% block header %}
+        {% include 'Administrador/headerlogin.html' %}
+    {% endblock %}
+</header>
+
+<main style="margin-top: 1rem" id="contenedor">
+
+    {% block main %}
+    <section class="" id="Perfil">
+      <div class="container-fluid">
+        <div class="row">
+
+
+          <div id="carouselExampleIndicators" class="offset-1 col-lg-5 carousel slide" data-bs-ride="true">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="static/img/licor.jpeg" class="d-block w-100 pt-3 mt-5 pt-5" alt="licor">
+              </div>
+              <div class="carousel-item">
+                <img src="static/img/promocion.jpeg" class="d-block w-100 mt-5 pt-5" alt="promocion">
+              </div>
+              <div class="carousel-item">
+                <img src="static/img/nuevolicor.jpeg" class="d-block w-100 mt-5 pt-5" alt="nuevo">
+              </div>
+              <div class="carousel-item">
+                <img src="static/img/licor2.jpeg" class="d-block w-100 pt-3 mt-5 pt-5" alt="licor2">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endblock %}
+</main>
+
+<footer>
+    {% block footer %}
+    {% endblock %}
+</footer>
+
+{% block frmodal %}
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}
+
+{% block jscript %}
+{% endblock %}
+</body>
+</html>

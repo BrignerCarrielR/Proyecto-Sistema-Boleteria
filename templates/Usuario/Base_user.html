@@ -1,0 +1,64 @@
+{% extends 'Base_User.html' %}
+{% load static %}
+{% block regresar %}
+	<a class="btn btn btn-danger" href="{{ url_anterior }}">
+		Regresar
+	</a>
+{% endblock %}
+{% block main %}
+	<div class="container-fluid">
+        <div>
+            <div class="row row-cols-1 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-2">
+                <div class="col ">
+                    <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="height:15rem; width: 15rem">
+	                    <img src="{% static 'img/bus.png' %}" class="img-fluid  mx-auto d-block" style="width:60%">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-secondary">Buses</h5>
+                            <a class="btn btn-secondary btn-outline-light form-control"
+                                href="{% url 'list_buses_user' %}">IR</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="height:15rem; width: 15rem">
+	                    <img src="{% static 'img/chofer.png' %}" class="img-fluid  mx-auto d-block" style="width:60%">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-secondary">Chofer</h5>
+                            <a class="btn btn-secondary btn-outline-light form-control"
+                            href="{% url 'list_chofer_user' %}">IR</a>
+                        </div>
+                    </div>
+                </div>
+	            <div class="col">
+                    <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="height:15rem; width: 15rem">
+	                    <img src="{% static 'img/terramoza.png' %}" class="img-fluid  mx-auto d-block" style="width:60%">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-secondary">Oficial(Copiloto)</h5>
+                            <a class="btn btn-secondary btn-outline-light form-control"
+                               href="{% url 'list_terramoza_user' %}">IR</a>
+                        </div>
+                    </div>
+                </div>
+	            <div class="col">
+                    <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="height:15rem; width: 15rem">
+	                    <img src="{% static 'img/venta.png' %}" class="img-fluid  mx-auto d-block" style="width:60%">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-secondary">Venta De Bolestos</h5>
+                            <a class="btn btn-secondary btn-outline-light form-control"
+                            href="{% url 'list_Venta_user' %}">IR</a>
+                        </div>
+                    </div>
+                </div>
+	            <div class="col">
+                    <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="height:15rem; width: 15rem">
+	                    <img src="{% static 'img/boleto.png' %}" class="img-fluid  mx-auto d-block" style="width:60%">
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-secondary">Boletos</h5>
+                            <a class="btn btn-secondary btn-outline-light form-control" href="{% url 'list_boletos_user' %}">IR</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'Usuario/detalle_user.html' %}
+{% load static %}
+
+
+{% block controls %}
+	{% csrf_token %}
+<div class="container" style="font-family: serif;">
+        <div class="container col-md-8 shadow-lg p-3 mb-5 bg-body rounded">
+            <h4 class="text-center fw-bold">COOPERATIVA TRAN'S PALIZADA</h4>
+            <div class="row">
+                <h5 class=" text-center fw-semibold">DETALLE DEL CHOFER</h5>
+            </div>
+            <div class="p-4 row">
+                <div class="col">
+                    <img src="https://public.admin-story.prtimes.jp/uploads/13670/2703/original_ecf179f0-7a5c-11eb-a677-0d70f6e57c51.jpg"
+                        style="width: 250px;">
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <div class=" p-2 row">
+                                <h5 class="col fw-semibold"><strong>Nombre</strong></h5>
+                                <p class="col">{{ object.nombres }}</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="p-2 row">
+                                <h5 class="colfw-semibold"><strong>Apellidos</strong></h5>
+                                <p class="col">{{ object.apellidos }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class=" p-2 row">
+                                <h5 class="col fw-semibold"><strong>Cédula</strong></h5>
+                                <p class="col">{{ object.cedula }}</p>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="p-2 row">
+                                <h5 class="col-6 fw-semibold"><strong>Teléfono</strong></h5>
+                                <p class="col">{{ object.telefonos }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <h4 class="text-center">Información</h4>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr>
+                        <th scope="col">Tipo de Licencia:</th>
+                        <th scope="col">Exp_Licencia:</th>
+                        <th scope="col">Direccion:</th>
+                        <th scope="col">Edad:</th>
+                    </tr>
+                    <tr>
+                        <td>{{ object.tipo_licencia }}</td>
+                        <td>{{ object.exp_licencia|date:"d/m/Y" }}</td>
+                        <td>{{ object.direccion }}</td>
+                        <td>{{ object.edad }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Provincia:</th>
+                        <th scope="col">Ciudad:</th>
+                        <th scope="col">Grupo Sanguineo:</th>
+                    </tr>
+                    <tr>
+                        <td>{{ object.provincia }}</td>
+                        <td>{{ object.ciudad }}</td>
+                        <td>{{ object.grupo_sanguineo }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,238 @@
+{% extends 'Administrador/form_admin.html' %}
+{% load static %}
+
+{% block controls %}
+    {% csrf_token %}
+    {% if form.errors %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Error al Grabar</strong> {{ form.errors }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+    {% endif %}
+    <div class="container shadow-sm p-3 mb-5 bg-body rounded">
+        <h3 class="text-white text-center" style="background-color: #003b46;">Venta</h3>
+        {#        <div>#}
+        {#            <form class="row g-3 p-3">#}
+        {#            </form>#}
+        {#        </div>#}
+        <div class="row g-3 p-3 align-items-center">
+            <form class="" action="post">
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="col">
+                            <img src="https://th.bing.com/th/id/R.167421f4061905a5032afc13688e96dd?rik=%2bZxvAd8eRHUbFA&pid=ImgRaw&r=0"
+                                 class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="row align-items-center mt-2">
+                        <div class="" id="colBtnBus">
+                            <button class="btn btn-danger text-center" type="button" id="btnDeleteBus"
+                                    style="display: none">
+                                x
+                            </button>
+                        </div>
+                        <div class="" id="colBus">
+                            <select class="form-select" id="cboBus" required>
+                                <option value="">----</option>
+                                {% for b in bus %}
+                                    <option
+                                            value="{{ b.id }}"
+                                            data-ajson='{"id":"{{ b.id }}","modelo":"{{ b.modelo }}","capacidad":"{{ b.capacidad_pasajero }}"}'
+                                    >
+                                        {{ b.modelo }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="cboChofer" class="form-label">Chofer</label>
+                            <select class="form-select" id="cboChofer" required>
+                                <option value="">----</option>
+                                {% for cho in chofer %}
+                                    <option
+                                            value="{{ cho.id }}"
+                                            {#                                            data-ajson='{"id":"{{ cho.id }}","nombres":"{{ cho.nombres }}"}'#}
+                                    >
+                                        {{ cho.nombres }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="cboCopiloto" class="form-label">Copiloto</label>
+                            <select class="form-select" id="cboCopiloto" required>
+                                <option value="">----</option>
+                                {% for cop in copiloto %}
+                                    <option
+                                            value="{{ cop.id }}"
+                                            {#                                            data-ajson='{"id":"{{ cop.id }}","nombres":"{{ cop.nombres }}"}'#}
+                                    >
+                                        {{ cop.nombres }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <label for="inputState" class="form-label">Ruta</label>
+                            </div>
+                            <div class="row">
+                                <div class="" id="colBtnRuta">
+                                    <button class="btn btn-danger" type="button" id="btnDeleteRuta"
+                                            style="display: none">
+                                        x
+                                    </button>
+                                </div>
+                                <div class="col" id="colRuta">
+
+                                    <select class="form-select" id="cboRuta" required>
+                                        <option value="">----</option>
+                                        {% for rut in ruta %}
+                                            <option
+                                                    value="{{ rut.id }}"
+                                                    {#                                                    data-ajson='{"id":"{{ rut.id }}","nombreRuta":"{{ rut.nombreRuta }}"}'#}
+                                            >
+                                                {{ rut.nombreRuta }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-4">
+                            <label for="inputState" class="form-label">Fecha / Hora</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" style="background: white"
+                                       aria-label="Recipient's username" aria-describedby="basic-addon2" disabled
+                                       id="fecha_hora">
+                                <span class="input-group-text">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         class="bi bi-calendar3" viewBox="0 0 16 16">
+  <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+  <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+</svg>
+                                </span>
+                            </div>
+                            {#<input type="datetime-local" class="form-control" id="inputCity">#}
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputState" class="form-label">Oficinista</label>
+                            <input type="text" class="form-control" aria-label="Recipient's username" disabled
+                                   id="idOficinista">
+
+                            {#                        <input type="text" class="form-control" value="Bcarrielr" aria-label="Username"#}
+                            {#                               aria-describedby="basic-addon1" disabled>#}
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputState" class="form-label">Total</label>
+                            <input type="text" class="form-control" value="$ 0.00 ctvs" aria-label="Username"
+                                   aria-describedby="basic-addon1" disabled id="textTotal">
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-5 pt-2">
+                <div class="col">
+                    <h5 class="text-white text-center" style="background-color: #003b46">Pasaje</h5>
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                            <label for="inputPasajero" class="form-label">Pasajero</label>
+                            <input type="text" class="form-control" id="inputPasajero" required disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="idDestino" class="form-label">Destino</label>
+                            <select id="idDestino" class="form-select" disabled required>
+                                <option value="">----</option>
+                                {#                                <option>Vinces - Macul</option>#}
+                                {#                                <option>Vinces - Palestina</option>#}
+                                {#                                <option>Vinces - Santa Lucía</option>#}
+                                {#                                <option>Vinces - Daule</option>#}
+                                {#                                <option>Vinces - Nobol</option>#}
+                                {#                                <option>Vinces - Guayaquil</option>#}
+                                {#                                <option>Guayaquil - Nobol</option>#}
+                                {#                                <option>Guayaquil - Daule</option>#}
+                                {#                                <option>Guayaquil - Santa Lucía</option>#}
+                                {#                                <option>Guayaquil - Palestina</option>#}
+                                {#                                <option>Guayaquil - Macul</option>#}
+                                {#                                <option>Guayaquil - Vinces</option>#}
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="idAsiento" class="form-label">Asiento</label>
+                            <input type="number" max="2" min="1" class="form-control" id="idAsiento" value="1" required
+                                   disabled>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="idCosto" class="form-label">Costo</label>
+                            <input type="text" class="form-control" id="idCosto" disabled placeholder="$ 0.00">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="idModoPago" class="form-label">Modo Pago</label>
+                            <select id="idModoPago" class="form-select" required disabled>
+                                <option selected>Efectivo</option>
+                                <option>Tarjeta</option>
+                            </select>
+                        </div>
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            {#                            <button class="btn bg-secondary text-white" type="button" id="btnCalcular">Calcular</button>#}
+                            <button class="btn btn-success " type="button" id="btnAgg">Agregar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            {#__________________________________________________ TABLE _____________________________________________________#}
+
+            <div class="col-12 col-md-7 p-2">
+                <h5 class="text-white text-center" style="background-color: #003b46">Pasajes Vendidos</h5>
+                <div class="border vertical-scrollable" style="height: 200px;">
+                    <table class="table table-striped ">
+                        <thead>
+                        <tr>
+                            <th scope="col">Asiento</th>
+                            <th scope="col">Pasajero</th>
+                            <th scope="col">Destino</th>
+                            <th scope="col">Costo</th>
+                            <th scope="col">Hora</th>
+                            {#                            <th scope="col">Acción</th>#}
+                        </tr>
+                        </thead>
+                        <tbody class="table-group-divider" id="idTablaBoletos">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="action" value="{{ action }}">
+    <output id="idImgContenedor" style="width: 200px !important;"></output>
+
+
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript">
+        {#var bigdatalist = {{ bigdataList|safe }};#}
+        {#        {% if recDetalle %}#}
+        {#            var detrec = {{ recDetalle|safe }};#}
+        {#        {% endif %}#}
+        var save = '{{ action_save }}';
+        var idOfi = document.querySelector('[name="headerLogin"]');
+    </script>
+    <script type="text/javascript" src="{% static 'js/scripts.js' %}"></script>
+{% endblock %}

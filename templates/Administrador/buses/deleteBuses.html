@@ -1,0 +1,33 @@
+{% extends 'Administrador/delete_admin.html' %}
+{% load static %}
+
+
+{% block controls %}
+	{% csrf_token %}
+	<b STYLE="color: #003b46">Estas seguro de eliminar este Registro?</b>
+	<p>_______No se podrá recuperar la siguiente información!</p>
+	<hr>
+	<b>Informacion:</b>
+	<table class="table">
+		<thead>
+		<tr>
+			<th style="width: 250px" scope="col">Modelo</th>
+			<th  style="width: 250px" scope="col">Marca</th>
+			<th style="width: 250px"  scope="col">Placa</th>
+			<th style="width: 250px"  scope="col">Propietario</th>
+			<th style="width: 250px"  scope="col">Telefono</th>
+
+		</tr>
+		</thead>
+		<tbody class="table-group-divider">
+		<tr>
+			<td style="width: 250px" >{{ object.modelo}}</td>
+			<td style="width: 250px" >{{ object.marca }}</td>
+			<td style="width: 250px" >{{ object.placa}}</td>
+			<td style="width: 250px" >{{ object.propietario }}</td>
+			<td style="width: 250px" >{{ object.telefono }}</td>
+		</tr>
+		</tbody>
+	</table>
+
+{% endblock %}

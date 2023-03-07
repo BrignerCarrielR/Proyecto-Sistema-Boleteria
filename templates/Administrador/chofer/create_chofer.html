@@ -1,0 +1,108 @@
+{% extends 'Administrador/form_admin.html' %}
+{% load static %}
+
+{% block controls %}
+	{% csrf_token %}
+	{% if form.errors %}
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			<strong>Error al Grabar</strong> {{ form.errors }}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+
+	{% endif %}
+
+	<form class="row g-3 needs-validation shadow-lg p-3 mb-5 bg-body rounded">
+		<input type="hidden" name="action" value="{{ action }}">
+			<div class="col-md-6">
+				<div class="input-group mb-3 ">
+					<span class="input-group-text btn-success" id="basic-addon1"
+					      style="background-color: #003b46; color: #ffffff">Nombres</span>
+					{{ form.nombres }}
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="input-group mb-3">
+					<span class="input-group-text btn-success" id="inputGroup-sizing-default"
+					      style="background-color: #003b46; color: #ffffff">Apellidos</span>
+					{{ form.apellidos }}
+					</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="input-group mb-3 ">
+					<span class="input-group-text btn-success" id="basic-addon1"
+					      style="background-color: #003b46; color: #ffffff">Cédula</span>
+					{{ form.cedula }}
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="input-group mb-3">
+					<span class="input-group-text btn-success" id="basic-addon1"
+					      style="background-color: #003b46; color: #ffffff">Télefono</span>
+					{{ form.telefonos }}
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="input-group mb-3">
+					<label class="input-group-text btn-success" for="inputGroupSelect01"
+					       style="background-color: #003b46; color: #ffffff">T. Licencia</label>
+					{{ form.tipo_licencia }}
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="input-group mb-3">
+					<span class="input-group-text btn-success" id="basic-addon1"
+					      style="background-color: #003b46; color: #ffffff">Exp. Licencia</span>
+					{{ form.exp_licencia }}
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="input-group mb-3 ">
+					<span class="input-group-text btn-success" id="basic-addon1"
+					      style="background-color: #003b46; color: #ffffff">Dirección</span>
+					{{ form.direccion }}
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="input-group mb-3">
+					<span class="input-group-text btn-success" id="basic-addon1"
+					      style="background-color: #003b46; color: #ffffff">Edad</span>
+					{{ form.edad }}
+				</div>
+			</div>
+
+
+			<div class="col-md-6">
+				<div class="input-group mb-3">
+					<label class="input-group-text btn-success" for="inputGroupSelect01"
+					       style="background-color: #003b46; color: #ffffff">Privincia</label>
+					{{ form.provincia }}
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="input-group mb-3">
+					<label class="input-group-text btn-success" for="inputGroupSelect01"
+					       style="background-color: #003b46; color: #ffffff">Ciudad</label>
+					{{ form.ciudad }}
+				</div>
+			</div>
+
+		<div class="col-auto input-group row ">
+			<div class="col-md-6">
+				<div class="input-group mb-3">
+					<label class="input-group-text btn-success" for="inputGroupSelect01"
+					       style="background-color: #003b46; color: #ffffff">Grupo Sanguíneo</label>
+					{{ form.grupo_sanguineo }}
+				</div>
+			</div>
+
+		</div>
+	</form>
+
+	<input type="hidden" name="action" value="{{ action }}">
+	<output id="idImgContenedor" style="width: 200px !important;"></output>
+{% endblock %}

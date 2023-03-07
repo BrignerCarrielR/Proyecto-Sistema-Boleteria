@@ -1,0 +1,100 @@
+{% extends 'Administrador/list_admin.html' %}
+{% load static %}
+
+{% block search %}
+	<form method="get">
+		<div>
+			<input class="col-md-2 m-1" type="text" name="chofer" placeholder="Nombre del Chofer"
+			       value="{{ request.GET.chofer }}">
+
+			<input class="col-md-2 m-1" type="text" name="copiloto" placeholder="Nombre del Copiloto"
+			       value="{{ request.GET.copiloto }}">
+
+			<input class="col-md-2 m-1 " type="text" name="oficinista" placeholder="Nombre del Oficinista"
+			       value="{{ request.GET.oficinista }}">
+			{% if request.GET.ruta %}
+				{% for ru in ruta %}
+					{% if request.GET.ruta  ==  ru.id|slugify %}
+						<select name="ruta" class="col-md-2 m-1 " style="height: 28px">
+							<option value="{{ ru.id }}"
+							        {% if ruta.id == request.GET.ruta %}selected{% endif %}> {{ ru.nombreRuta }}</option>
+							{% for ruta in ruta %}
+								<option value="{{ ruta.id }}"
+								        {% if ruta.id == request.GET.ruta %}selected{% endif %}>{{ ruta.nombreRuta }}</option>
+							{% endfor %}
+						</select>
+					{% endif %}
+				{% endfor %}
+			{% else %}
+				<select name="ruta" class="col-md-2 m-1 " style="height: 28px">
+					<option value="">Escoger Ruta</option>
+					{% for ruta in ruta %}
+						<option value="{{ ruta.id }}"
+						        {% if ruta.id == request.GET.ruta %}selected{% endif %}>{{ ruta.nombreRuta }}</option>
+					{% endfor %}
+				</select>
+			{% endif %}
+
+			<input class="col-md-1 m-1" type="submit" value="Filtrar" title="Buscar por la Información Ingresada">
+			<input type="button" value="Limpiar" title="Limpiar la Información Ingresada"
+			       onclick="location.href='{% url 'list_Venta_user' %}'">
+		</div>
+		<input class="col-md-2 m-1" type="button" value="Fecha mayores a:" title="Buscar por la Información Ingresada"
+		       disabled style="color: black; text-align: left;width: 135px">
+		<input class="col-md-2  m-1" type="datetime-local" name="fechainicio" value=
+				"{{ request.GET.fechainicio }}">
+		<input class="col-md-2 m-1" type="button" value="Fecha menores a:"
+		       disabled style="color: black; text-align:  left;width: 135px">
+		<input class="col-md-2  m-1" type="datetime-local" name="fechafin" value=
+				"{{ request.GET.fechafin }}">
+	</form>
+{% endblock %}
+
+{% block columns %}
+	<tr>
+		<th scope="col">Nro</th>
+		<th scope="col">Chofer</th>
+		<th scope="col">Copiloto</th>
+		<th scope="col">Ruta</th>
+		<th scope="col">Fecha/Hora</th>
+		<th scope="col">Total</th>
+		<th scope="col">Oficinista</th>
+		<th scope="col">Acciones</th>
+	</tr>
+{% endblock %}
+
+{% block rows %}
+	{% for object in lis_venta %}
+		<tr>
+			<td>{{ forloop.counter }}</td>
+			<td>{{ object.chofer }}</td>
+			<td>{{ object.copiloto }}</td>
+			<td>{{ object.ruta }}</td>
+			<td>{{ object.fecha_hora }}</td>
+			<td>{{ object.total }}</td>
+			<td>{{ object.oficinista.nom_user }}</td>
+			<td class="text-center">
+				<a class='btn text-light' style="background-color: #003b46; color: #c4dfe6;"
+				   title="Ver Factura de la Venta"
+				   href="{% url 'FacturaVenta_adm' object.id %}">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+					     class="bi bi-info-square-fill" viewBox="0 0 16 16">
+						<path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.93 4.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+					</svg>
+				</a>
+			</td>
+		</tr>
+	{% endfor %}
+
+{% endblock %}
+{% block buttons_list %}
+	<a href="{{ cancelar_url }}" class="btn btn-flat" style="background-color: #66a5ad; color: #c4dfe6;"
+	   title="Volver a la pagina al Menú">
+		<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+		     class="bi bi-x-octagon" viewBox="0 0 16 16">
+			<path d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
+			<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+		</svg>
+		Cancelar
+	</a>
+{% endblock %}
