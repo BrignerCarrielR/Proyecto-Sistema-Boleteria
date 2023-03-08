@@ -19,8 +19,8 @@
 {% block columns %}
 	<tr>
 		<th scope="col">id</th>
-		<th scope="col" style="width: 200px">Nombres</th>
-		<th scope="col" style="width: 150px">Cédula</th>
+		<th scope="col" >Nombres</th>
+		<th scope="col" >Cédula</th>
 		<th scope="col" style="width: 150px">Télefono</th>
 		<th scope="col" style="width: 150px">Provincia</th>
 		<th scope="col" style="width: 100px">Cuidad</th>
@@ -32,7 +32,7 @@
 {% block rows %}
 	{% for object in choferes %}
 		<tr>
-			<th>{{ object.id }}</th>
+			<th>{{ forloop.counter }}</th>
 			<td>{{ object.nombres }} {{ object.apellidos }}</td>
 			<td>{{ object.cedula }}</td>
 			<td>{{ object.telefonos }}</td>

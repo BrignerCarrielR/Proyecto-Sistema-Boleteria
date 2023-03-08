@@ -117,8 +117,8 @@ class InicioUsuario(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = 'INICIO USER'
-        context['rol'] = "USUAIRO"
+        context['titulo'] = 'INICIO OFICINISTA'
+        context['rol'] = "OFICINISTA"
         context['Inic'] = "/InicioUsuario"
         context['url_anterior'] = "/"
         return context
@@ -143,10 +143,10 @@ class ListaUser(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['titulo'] = 'LISTADO DE USUARIOS'
+        context['titulo'] = 'LISTADO DE OFICINISTAS'
         context['cancelar_url'] = '/InicioAdministrador'
         context['crear_url'] = '/newuser'
-        context['rol'] = 'LISTADO DE USUARIOS'
+        context['rol'] = 'LISTADO DE OFICINISTAS'
         context['Inic'] = '/InicioAdministrador'
         context['query'] = self.request.GET.get("query") or ""
         return context

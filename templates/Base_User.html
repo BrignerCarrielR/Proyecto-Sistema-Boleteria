@@ -1,46 +1,88 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{{ rol }}</title>
-    {% load static %}
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
-    {% block headcss %}
-    {% endblock %}
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>{{ rol }}</title>
+	{% load static %}
+	<!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+	      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<!-- JavaScript Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	        crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+	{% block headcss %}
+	{% endblock %}
 </head>
 <body>
-<header>
-    {% block header %}
-        {% include 'Usuario/headerlogin_User.html' %}
-    {% endblock %}
-</header>
+{% if request.session.nom_user%}
+	<header>
+		{% block header %}
+			{% include 'Usuario/headerlogin_User.html' %}
+		{% endblock %}
+	</header>
 
-<main style="margin-top: 1rem" id="contenedor">
+	<main style="margin-top: 1rem" id="contenedor">
 
-    {% block main %}
+		<div>
+			{% block main %}
 
-    {% endblock %}
-</main>
+			{% endblock %}
+		</div>
+	</main>
 
-<footer>
-    {% block footer %}
-    {% endblock %}
-</footer>
+	<footer>
+		{% block footer %}
+			{% include 'footer.html' %}
+		{% endblock %}
+	</footer>
 
-{% block frmodal %}
-{% endblock %}
+	{% block frmodal %}
+	{% endblock %}
 
-{% block js %}
+	{% block js %}
 
-{% endblock %}
+	{% endblock %}
 
-{% block jscript %}
-{% endblock %}
+	{% block jscript %}
+	{% endblock %}
+{% else %}
+	<body>
+	<div class="container p-5">
+
+		<div class="card text-center">
+			<div class="card-header">
+				<strong>ERROR..</strong>
+			</div>
+			<div class="card-body">
+				<h5 class="card-title"><strong>Iniciar Sesión</strong></h5>
+				<p class="card-text">Para manipular el sistema debe de Iniciar Sesión</p>
+				<a href="{% url 'login_user' %}" class="btn" style="background-color: #66a5ad; color: white;">Ir al
+					Login</a>
+			</div>
+			<div class="card-footer text-muted">
+				<strong id="fecha_hora"></strong>
+			</div>
+		</div>
+	</div>
+	</body>
+	<script>
+        document.addEventListener("DOMContentLoaded", e => {
+            const fechaActual = new Date();
+
+            const anio = fechaActual.getFullYear();
+            const mes = String(fechaActual.getMonth() + 1).padStart(2, '0');
+            const dia = String(fechaActual.getDate()).padStart(2, '0');
+
+            const fechaHoraActual = `${anio} / ${mes} / ${dia}`;
+
+            document.getElementById("fecha_hora").innerHTML = fechaHoraActual;
+        })
+	</script>
+
+{% endif %}
 </body>
 </html>
