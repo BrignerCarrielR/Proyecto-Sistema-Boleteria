@@ -77,9 +77,7 @@ DATABASES = {
     "default": {
         "ENGINE": "mssql",
         "NAME": "SistemaWeb_Boletería",
-        "USER": "admin",
-        "PASSWORD": "123",
-        "HOST": "LAPTOPBRIGNER10\SQLEXPRESS",
+        "HOST": "LAPTOPBRIGNER10",
         "PORT": "",
 
         "OPTIONS": {

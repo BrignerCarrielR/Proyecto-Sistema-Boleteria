@@ -1,8 +1,9 @@
 from django.contrib import admin
 
 # Register your models here.
-from SisteWeb_Boleto.models import Usuario, Administrador, CabeceraVenta, DetalleVenta, Ruta
+from .models import Usuario, Administrador, CabeceraVenta, DetalleVenta, Ruta
 
+admin.site.register(Ruta)
 class TableAdmin(admin.ModelAdmin):
     list_display = ['nombre','contraseña']
     search_fields = ['nombre']
